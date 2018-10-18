@@ -1,0 +1,134 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    resourcePrefix "common"
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["cardview-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    /*######################rx系列#################*/
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxbinding"]
+    api rootProject.ext.dependencies["rxbinding-recyclerview-v7"]
+    api rootProject.ext.dependencies["rxbinding-support-v4"]
+    api rootProject.ext.dependencies["rxbinding-design"]
+    api rootProject.ext.dependencies["rxbinding-appcompat-v7"]
+    api rootProject.ext.dependencies["rxpermissions"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["rxlifecycle"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["dagger2"]
+    api rootProject.ext.dependencies["zxing-library"]
+    /*######################屏幕适配百分比#################*/
+    api 'com.bulong.rudeness:rudeness:0.1.4@aar'
+
+    api 'com.facebook.stetho:stetho:1.5.0'
+    api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    api 'com.roughike:bottom-bar:2.3.1'
+    /*###################上拉加载下拉刷新##################*/
+    api 'com.shizhefei:MVCHelper-Library:1.3.2'
+    api 'com.shizhefei:MVCHelper-CoolRefresh:1.3.2'
+    api 'com.shizhefei:CoolRefreshView:1.0.1'
+
+    //上拉刷新 下拉加载
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    api 'com.takwolf.android:lock9view:0.1.3'
+
+    api 'com.github.bumptech.glide:glide:4.7.1'
+    api 'com.jakewharton:butterknife:8.8.1'
+
+    /*###################okgo网络请求##################*/
+    api 'com.lzy.net:okgo:3.0.4'
+    api 'com.lzy.net:okrx2:2.0.2'
+    api 'com.lzy.net:okserver:2.0.5'
+
+    /*###################短信验证码##################*/
+    api 'com.justkiddingbaby:vercodeedittext:1.0.5'
+
+    /*###################二维码##################*/
+    api 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+
+    //拖动seekbar
+    api 'com.zhouyou:signseekbar:1.0.6'
+
+    //slideLayout
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    api 'com.wang.avi:library:2.1.3'
+    api 'com.shizhefei:HVScrollView:1.0.1'
+
+    /*#####################弹出对话框#####################*/
+    api('com.afollestad.material-dialogs:core:0.9.6.0') {
+        exclude group: 'com.android.support'
+    }
+    api('com.afollestad.material-dialogs:commons:0.9.6.0') {
+        exclude group: 'com.android.support'
+    }
+
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.38'
+    api 'com.just.agentweb:agentweb:4.0.2'
+    api 'com.github.yoojia:next-inputs-android:1.7.2'
+
+    api 'com.contrarywind:Android-PickerView:4.1.4'
+    api('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3') {
+        exclude group: "com.android.support"
+    }
+    api 'com.github.yoojia:next-inputs-android:1.7.2'
+
+    api 'com.zxy.android:recovery:0.1.6'
+    api 'com.github.Lee465357793:AppUpdateDialog:1.2'
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    api 'com.orhanobut:logger:1.15'
+    api 'com.github.lvzhihao100:ORCamera:1.1'
+    api 'com.youth.banner:banner:1.4.10'  //最新版本
+    api 'com.sskj.android:kchart:0.1.6'
+    api 'com.zwh:RxFingerPrinter:1.2.1'
+    /*#####################数据库room#####################*/
+    api('android.arch.persistence.room:runtime:1.0.0-rc1')
+    api 'android.arch.lifecycle:runtime:1.0.3'
+    api('android.arch.lifecycle:extensions:1.0.0-rc1')
+    api('android.arch.persistence.room:rxjava2:1.0.0-rc1')
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-rc1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-rc1"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    /*#####################路由框架#####################*/
+    api 'com.alibaba:arouter-api:1.4.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+}

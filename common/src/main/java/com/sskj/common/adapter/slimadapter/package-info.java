@@ -1,0 +1,1 @@
+package com.sskj.common.adapter.slimadapter;

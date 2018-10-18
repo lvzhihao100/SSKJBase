@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="k3dlibColorPrimary">#3F51B5</color>
+    <color name="k3dlibColorPrimaryDark">#303F9F</color>
+    <color name="k3dlibColorAccent">#FF4081</color>
+    <color name="k3dlibColorControlActivated">#843CF5</color>
+</resources>

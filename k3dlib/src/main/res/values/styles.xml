@@ -1,0 +1,46 @@
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="k3dlibBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/k3dlibColorPrimary</item>
+        <item name="colorPrimaryDark">@color/k3dlibColorPrimaryDark</item>
+        <item name="colorAccent">@color/k3dlibColorAccent</item>
+        <item name="colorControlNormal">@color/commonTextEEE</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="k3dlibSplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="k3dlibTranslucentTheme" parent="k3dlibBaseTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--&lt;!&ndash; 设置statusBarColor 为透明&ndash;&gt;-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <!--<item name="android:navigationBarColor">@color/k3dlibColorPrimary</item>-->
+        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+    </style>
+    <style name="k3dlibCommonTheme" parent="k3dlibBaseTheme">
+
+    </style>
+
+    <style name="k3dlibButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28pt</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="k3dlibButtonCancelStyle">
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28pt</item>
+        <item name="android:background">@null</item>
+    </style>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_white">#ffffff</color>
+    <color name="commonText333">#333</color>
+    <color name="commonText666">#666</color>
+    <color name="commonText999">#999</color>
+    <color name="commonTextAAA">#AAA</color>
+    <color name="commonTextBBB">#BBB</color>
+    <color name="commonTextCCC">#CCC</color>
+    <color name="commonTextDDD">#DDD</color>
+    <color name="commonTextEEE">#EEE</color>
+
+</resources>

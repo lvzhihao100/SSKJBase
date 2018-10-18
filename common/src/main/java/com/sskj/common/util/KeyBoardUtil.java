@@ -1,0 +1,91 @@
+package com.sskj.common.util;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.IBinder;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+import java.util.List;
+
+/**
+ * 作者 :吕志豪
+ * 简书：https://www.jianshu.com/u/6e525b929aac
+ * github：https://github.com/lvzhihao100
+ * 描述：
+ * 创建时间：2018-09-06 13:56
+ */
+public class KeyBoardUtil {
+    /**
+     * 打卡软键盘
+     *
+     * @param mEditText 输入框
+     * @param mContext  上下文
+     */
+    public static void openKeybord(EditText mEditText, Context mContext) {
+        InputMethodManager imm = (InputMethodManager) mContext
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+                InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    /**
+     * 关闭软键盘
+     *
+     * @param mEditText 输入框
+     * @param mContext  上下文
+     */
+    public static void closeKeybord(EditText mEditText, Context mContext) {
+        InputMethodManager imm = (InputMethodManager) mContext
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+    }
+    /**
+     * 隐藏软键盘(只适用于Activity，不适用于Fragment)
+     */
+    public static void hideSoftKeyboard(Activity activity) {
+        View view = activity.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    /**
+     * 隐藏软键盘(可用于Activity，Fragment)
+     *
+     * viewList 中需要放的是当前界面所有触发软键盘弹出的控件。
+     * 比如一个登陆界面， 有一个账号输入框和一个密码输入框，
+     * 需要隐藏键盘的时候， 就将两个输入框对象放在 viewList 中，
+     * 作为参数传到 hideSoftKeyboard 方法中即可。
+     */
+    public static void hideSoftKeyboard(Context context, List<View> viewList) {
+        if (viewList == null) return;
+
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+
+        for (View v : viewList) {
+            inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+    //显示软键盘
+    public static boolean showSystemKeyBord(Context context, View v) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        return imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
+    }
+    /**
+     * 如果键盘弹起则隐藏
+     * @param token
+     */
+    public static void hideKeyboard(Context context, IBinder token) {
+        if (token != null) {
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm.isActive()) {
+                imm.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        }
+    }
+}
